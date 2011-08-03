@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="Criacao do arquivo JAR do Opala" basedir="." default="testAndBuild">
+
+	<!-- set global properties for this build -->
+	<property name="output.folder1" value="..\LAPESI\WebContent\WEB-INF\lib" />
+	<property name="output.folder2" value="..\FINDv2\WebContent\WEB-INF\lib" />
+	<property name="output.folder3" value="..\FIND\WebContent\WEB-INF\lib" />
+	
+	<property name="jar.name" value="opala.jar" />
+	
+	<property name="dir.base" value="." />
+	<property name="dir.src" value="src" />
+	<property name="dir.src.class" value="bin" />
+	<property name="dir.test" value="test" />
+	<property name="dir.test.class" value="bintest" />
+	<property name="dir.lib" value="lib" />
+	<property name="dir.docs" value="docs" />
+
+	
+	<!-- Classpath's do Projeto -->
+	<path id="classpath.base">
+		<pathelement location="${dir.src}" />
+		<pathelement location="${dir.src.class}" />
+		<fileset dir="lib">
+			<include name="**/*.jar"/>
+		</fileset>
+	</path>
+	<path id="classpath.test">
+		<pathelement location="${dir.test}" />
+		<pathelement location="${dir.test.class}" />
+		<path refid="classpath.base" />
+	</path>
+
+	
+	<!-- Compila o código-fonte -->
+	<target name="compile" description="Compila o codigo-fonte do projeto">
+		<echo>Compilando código-fonte...</echo>
+		<mkdir dir="${dir.src.class}" />
+		<javac srcdir="${dir.src}" destdir="${dir.src.class}">
+			<classpath refid="classpath.base" />
+		</javac>
+	</target>
+	
+	<!-- Compila os testes -->
+	<target name="compile-test">
+		<echo>Compilando testes...</echo>
+		<mkdir dir="${dir.test.class}" />
+		<javac srcdir="${dir.test}" destdir="${dir.test.class}" >
+			<classpath refid="classpath.test" />
+		</javac>
+	</target>
+
+	<!-- Cria o arquivo .jar do Opala -->
+	<target name="createjar" depends="compile" description="Cria o arquivo .jar contendo os arquivos .classe e .java">
+		<echo>Iniciando criação do jar</echo>
+		<jar destfile="${jar.name}" compress="true">
+			<fileset dir="${dir.src}">
+				<include name="**/*.java" />
+			</fileset>
+			<fileset dir="${dir.src.class}">
+				<include name="**/*.jar" />
+				<include name="**/*.class" />
+			</fileset>
+		</jar>
+		<echo>Arquivo ${dir.src}/${jar.name} criado com sucesso.</echo>
+	</target>
+	
+	<!-- Executa testes e cria o arquivo jar do Opala -->
+	<target name="testAndBuild" depends="test, createjar, javadoc">
+		<echo>Build finalizado.</echo>
+	</target>
+
+	<!-- Executa os testes do Opala -->
+	<target name="test" depends="compile, compile-test" >
+		<echo>Executando suite de testes do Opala...</echo>
+		<junit haltonfailure="true" haltonerror="true" showoutput="true" fork="true" dir="${dir.base}">
+			<classpath refid="classpath.test" />
+			<formatter type="brief" usefile="false" />
+			<test name="br.edu.ifpi.opala.suite.SuiteOpalaTest" />
+		</junit>
+	</target>
+
+	<!-- Distribui o arquivo .jar do Opala nos projetos relacionados -->
+	<target name="distrjar" depends="createjar">
+		<echo>Distribuindo o jar</echo>
+		<copy file="${jar.name}" todir="${output.folder1}" overwrite="true" />
+		<copy file="${jar.name}" todir="${output.folder2}" overwrite="true" />
+		<copy file="${jar.name}" todir="${output.folder3}" overwrite="true" />
+	</target>
+	
+	<!-- Gera a documentação Javadoc do Opala -->
+	<target name="javadoc">
+		<javadoc sourcepath="${dir.src}" destdir="${dir.docs}" encoding="utf-8" doctitle="Opala Javadoc Documentation - Laboratório de Pesquisa em Sistemas de Informação">
+			<classpath refid="classpath.base" />
+		</javadoc>
+	</target>
+
+</project>

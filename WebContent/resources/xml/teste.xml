@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!DOCTYPE DOCUMENT SYSTEM "campos.dtd">
+<DOCUMENT>
+
+	<ID>
+	testeXMLDannylvan
+	</ID>
+	
+	<AUTHOR>
+	Dannylvan
+	</AUTHOR>
+
+	<TITLE>
+	As Aventuras de Pequennylvan
+	</TITLE>
+	
+	<PUBLICATION-DATE>
+	02/02/2008
+	</PUBLICATION-DATE>
+	
+	<FORMAT>
+	txt
+	</FORMAT>
+
+    <TYPE>
+    monografia
+    </TYPE>
+    
+    <KEYWORDS>
+    dannylvan xml metadados teste
+    </KEYWORDS>
+    
+    <FIELD NAME="tcharam">
+    	tcharamram!
+   	</FIELD>
+   	
+   	<FIELD NAME="oia">
+    	oiou!
+   	</FIELD>
+
+</DOCUMENT>

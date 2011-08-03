@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE DOCUMENT SYSTEM "campos.dtd">
+<DOCUMENT>
+
+	<ID></ID>
+	
+	<AUTHOR>
+	</AUTHOR>
+
+	<TITLE>
+	</TITLE>
+	
+	<PUBLICATION-DATE>	</PUBLICATION-DATE>
+	
+	<FORMAT>
+	</FORMAT>
+
+    <TYPE>
+    </TYPE>
+    
+    <KEYWORDS>
+    </KEYWORDS>
+    
+    <FIELD NAME="tcharam">
+   	</FIELD>
+   	
+   	<FIELD NAME="oia">
+   	</FIELD>
+
+</DOCUMENT>

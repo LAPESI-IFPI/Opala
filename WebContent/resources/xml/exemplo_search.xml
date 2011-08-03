@@ -1,0 +1,14 @@
+<search>
+<fields>
+<field name="SearchableText">Título</field>
+</fields>
+<return_fields>
+    <field name="Title"/>
+    <field name="Description" />
+    <field name="Type" />
+    <field name="modified" />
+</return_fields>
+
+<batch size="2"/>
+<sort on="Title" order="desc"/>
+</search>

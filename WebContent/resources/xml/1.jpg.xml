@@ -1,0 +1,68 @@
+<media>
+	<contributor>
+	contributor
+	</contributor>
+	
+	<created>
+	01/01/2008
+	</created>
+	
+	<creator>
+	Padua
+	</creator>
+	
+	<date>
+	02/02/2008
+	</date>
+	
+	<description>
+	Teste 
+	</description>
+	   
+    <effective>
+    12/12/2008
+    </effective>
+	
+	<expires>
+    12/12/2008
+    </expires>
+
+	<format>
+	txt
+	</format>
+
+	<id>
+	999999999
+	</id>
+
+	<language>
+	pt-BR
+	</language>
+	
+    <modified>
+    12/12/2008
+    </modified>
+
+	<publisher>
+	Editora_xpto
+	</publisher>
+
+	<rights>
+	GNU	
+	</rights>
+
+	<subject>
+	Teste
+	</subject>
+
+	<title>
+	Teste XML
+	</title>
+
+    <type>
+    documento
+    </type>
+
+
+
+</media>

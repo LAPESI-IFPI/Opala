@@ -1,0 +1,193 @@
+﻿LUZIA ALVES DA SILVA
+
+
+
+
+
+
+
+
+
+
+
+APRENDIZAGEM E DESENVOLVIMENTO DA PESSOA CEGA NA PERSPECTIVA SÓCIO-HISTÓRICA
+
+
+
+
+
+
+
+
+
+
+
+
+
+UNIVERSIDADE ESTADUAL DO OESTE DO PARANÁ
+CENTRO DE EDUCAÇÃO, COMUNICAÇÃO E ARTES
+CURSO DE ESPECIALIZAÇÃO EM FUNDAMENTOS DA EDUCAÇÃO
+
+Cascavel
+ 2005
+
+
+LUZIA ALVES DA SILVA
+
+
+
+
+
+
+
+
+
+
+APRENDIZAGEM E DESENVOLVIMENTO DA PESSOA CEGA NA PERSPECTIVA SÓCIO-HISTÓRICA
+
+
+
+Monografia apresentada para defesa, junto à Coordenação do Curso de Especialização em Fundamentos da Educação, Centro de Educação, Comunicação e Artes, Universidade
+Estadual do Oeste do Paraná, campus de Cascavel, para obtenção do título de Especialista em Educação.
+
+Orientadora: Profª Ms Lucia Terezinha  Zanato Tureck
+
+
+
+
+
+
+
+Cascavel
+ 2005
+
+LUZIA ALVES DA SILVA
+
+
+
+
+
+APRENDIZAGEM E DESENVOLVIMENTO DA PESSOA CEGA NA PERSPECTIVA SÓCIO-HISTÓRICA
+
+
+
+Monografia apresentada ao Curso de Especialização em Fundamentos da Educação, do Centro de Educação, Comunicação e Artes, da Universidade Estadual do Oeste do Paraná,
+para obtenção do título de Especialista em Educação, aprovada pela seguinte banca examinadora:
+
+
+
+
+
+Professora Ms Lucia Terezinha Zanato Tureck   ____________________________________
+
+Professor Ms Dorisvaldo da Silva       _____________________________________________
+
+Professora Ms Jane Peruzo Iacono      _____________________________________________
+
+
+Apresentada em 29 de julho de 2005.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+La ceguera, al crear una formación peculiar de la personalidad, reanima nuevas fuerzas, cambia las direcciones normales de las funciones y, de una forma creadora
+y orgánica, rahace y forma la psique de la persona. Por lo tanto, la ceguera no es sólo un defecto, una debilidad, sino también en cierto sentido una fuente de manifestación
+de las capacidades, una fuerza.(Por extraño y parecido a una paradoja que sea!)
+
+Lev Semenovich Vigotski
+
+
+SUMÁRIO
+
+
+
+
+INTRODUÇÃO ..................................................................................................
+05
+
+
+I - AS PESSOAS COM DEFICIÊNCIA NA HISTÓRIA..........................................
+10
+
+
+II - PRINCIPAIS TEORIAS PSICOLÓGICAS QUE INFLUENCIARAM A
+ EDUCAÇÃO DAS PESSOAS CEGAS NO BRASIL............................................
+
+16
+      2.1  O BEHAVIORISMO
+18
+      2.2  O CONSTRUTIVISMO
+20
+      2.3  A CONCEPÇÃO SÓCIO-HISTÓRICA
+23
+
+
+III - CONTRIBUIÇÕES DE VIGOTSKI PARA ESTUDO DA
+APRENDIZAGEM E DESENVOVIMENTO DAS PESSOAS CEGAS........
+
+30
+
+
+CONSIDERAÇÕES FINAIS.............................................................................
+41
+
+
+REFERÊNCIAS .................................................................................................
+46
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        INTRODUÇÃO
+
+
+        A opção por esse trabalho deu-se a partir de vários fatos, dentre eles, o de ter feito o curso de Pedagogia, com ênfase em Educação Especial, o qual abordou
+o processo de aprendizagem e de desenvolvimento sem muito aprofundamento das teorias que embasam esses processos. Além disso, eu não possuía nenhum conhecimento
+anterior sobre esses processos e a dinâmica dos cursos de graduação não permitem estudos mais aprofundados.
+        Outro motivo que me levou a optar por essa pesquisa é o fato de que possuo cegueira congênita, mas esta não limitou o meu processo de aprendizagem, nem tampouco
+o meu desenvolvimento. Quando criança tive acesso a várias experiências, as quais foram de fundamental importância para o meu processo de aprendizagem. Vale lembrar
+que nasci e estudei numa cidade de pequeno porte e sem muitos recursos. De nome Icaraíma, esta cidade situa-se no noroeste do Paraná. Além disso, meus pais são analfabetos
+e não tinham muito conhecimento sobre a deficiência visual, o que eles sabiam é que tinham uma filha e que esta, assim como o outro filho, precisava ser inserida
+na sociedade, ou seja, assim como o outro filho, ela precisava brincar, ter acesso ao  máximo de informações possível, aprender... Fui colocada na escola aos nove
+anos, não por falta de vontade de meus pais, mas pelo fato deles não terem conhecimento sobre isso.  Eles, como todos os pais, buscaram muito a cura para minha cegueira.
+Porém, nessa época, um médico, muito ético por sinal, esclareceu-os  que minha cegueira não teria cura, mas que eu poderia estudar através do sistema braile. A partir
+daí, meus pais foram à procura da escola. Lá me colocaram na pré-escola até que algum professor se interessasse em fazer a formação específica na área da Educação
+Especial que, naquela época, final da década de 80, ocorria nos cursos chamados de Formação de Professores para a Educação Especial, área de Deficiência Visual,
+na forma de Estudos Adicionais, em nível médio. Esse interesse veio da professora que me dava aula na pré-escola. Ressalta-se que o referido interesse, tenho certeza,
+não foi por pena, pois sempre ela me tratou como tratava os demais alunos. E quando fui para o Centro Especializado de Atendimento para Deficientes Visuais - CAEDV,
+numa escola da rede municipal de minha cidade, para ser atendida por ela, sempre foi muito enérgica quando necessário. Durante o período em que fui sua aluna, ela
+jamais me privilegiou, nem quando eu fingia que estava com dor de barriga por estar com preguiça de ir à escola, pois, quando da ocorrência dessas situações, ela
+me deixava de castigo, tirando algo de que eu gostava de fazer por um determinado tempo. Assim, eu aprendia o braile no CAEDV e cursava primeira série na sala comum
+com dez anos. No final do ano da primeira série, fiz várias provas, chamadas de testes de equivalência e, aos onze, estava na quarta série. Com doze anos, fui para
+a segunda etapa do ensino fundamental. Aí, outra luta! A nova escola, agora da rede estadual, não queria me aceitar sob a alegação de que não tinham capacidade para
+me ensinar. Meus pais buscaram o Núcleo Estadual de Educação e assim, sob a imposição do referido Núcleo e com duas semanas após o início das aulas, eu entrei na
+escola, matriculada na 5ª série. Logo fiz vários amigos e eles me ditavam todos os textos que os professores passavam no quadro. Alguns professores também ditavam,
+às vezes, faziam ditado para a sala toda e diziam para os outros alunos que era melhor assim, pois, dessa forma, eles poderiam ditar para mim também.
+        Um fato ocorrido nessa época vale a pena ser descrito para compreender a concepção que alguns professores tinham e parece que até hoje têm a respeito de
+pessoas com deficiência. As provas eram Dannylvan Mônica
