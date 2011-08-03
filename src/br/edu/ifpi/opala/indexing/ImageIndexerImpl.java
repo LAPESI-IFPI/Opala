@@ -120,7 +120,7 @@ public class ImageIndexerImpl implements ImageIndexer {
 			}
 			
 			if (hasIdentifier(metaDocument.getId())) {
-			//	return ReturnMessage.DUPLICATED_ID;
+				return ReturnMessage.DUPLICATED_ID;
 			}
 
 			DocumentBuilder builder = DocumentBuilderFactory
