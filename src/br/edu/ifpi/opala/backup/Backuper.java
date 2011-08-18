@@ -37,7 +37,7 @@ public abstract class Backuper {
 	}
 	
 	public void update() throws IOException {
-		System.out.println("Iniciando atualização do backup... ");
+		System.out.println("Iniciando atualização do backup...");
 		if(backupFolder.canRead()){
 	        for (String name : backup.listAll()) {
 	        	updateBackup(name, index, backup);
