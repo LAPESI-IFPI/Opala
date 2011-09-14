@@ -3,9 +3,7 @@ package br.edu.ifpi.opala.indexing;
 import static org.junit.Assert.assertEquals;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,7 +15,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import br.edu.ifpi.opala.indexing.parser.TxtParser;
 import br.edu.ifpi.opala.utils.IndexManager;
 import br.edu.ifpi.opala.utils.MetaDocument;
 import br.edu.ifpi.opala.utils.MetaDocumentBuilder;
