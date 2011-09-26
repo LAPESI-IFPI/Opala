@@ -320,6 +320,7 @@ public class ImageIndexerImpl implements ImageIndexer {
 					new BrazilianAnalyzer(Version.LUCENE_30),
 					IndexWriter.MaxFieldLength.UNLIMITED);
 			writer.addDocument(doc);
+			writer.optimize();
 			writer.close();
 			System.out.println("atualizou opala");
 			
@@ -341,6 +342,7 @@ public class ImageIndexerImpl implements ImageIndexer {
 						IndexWriter.MaxFieldLength.UNLIMITED);
 
 				writerBackup.addDocument(docBackup);
+				writerBackup.optimize();
 				writerBackup.close();
 
 			} catch (CorruptIndexException e) {
