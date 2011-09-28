@@ -3,7 +3,6 @@ package br.edu.ifpi.opala.searching;
 import java.util.List;
 import java.util.Map;
 
-import br.edu.ifpi.opala.indexing.TextIndexerImpl;
 import br.edu.ifpi.opala.utils.Path;
 import br.edu.ifpi.opala.utils.ReturnMessage;
 

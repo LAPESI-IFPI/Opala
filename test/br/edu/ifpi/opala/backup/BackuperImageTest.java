@@ -9,25 +9,15 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-import net.semanticmetadata.lire.DocumentBuilder;
-import net.semanticmetadata.lire.DocumentBuilderFactory;
 import net.semanticmetadata.lire.ImageSearchHits;
 import net.semanticmetadata.lire.ImageSearcher;
 import net.semanticmetadata.lire.ImageSearcherFactory;
 
-import org.apache.lucene.analysis.br.BrazilianAnalyzer;
-import org.apache.lucene.document.Document;
-import org.apache.lucene.document.Fieldable;
-import org.apache.lucene.index.CorruptIndexException;
 import org.apache.lucene.index.IndexReader;
-import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
-import org.apache.lucene.store.LockObtainFailedException;
-import org.apache.lucene.util.Version;
 import org.junit.After;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -155,50 +145,6 @@ public class BackuperImageTest {
 	 assertEquals(ReturnMessage.UNEXPECTED_BACKUP_ERROR,
 	 indexer.delImage("doc1"));
 	 }
-	
-
-	
-	@Test
-	public void deveriaAtualizarOBackupAoVerificarDiferencasDeTamanhoDosIndices()
-			throws IOException {
-		considerandoQueNadaFoiIndexadoNoIndiceDeBackup();
-		MetaDocument metaDocument = new MetaDocument();
-		metaDocument.setTitle("Documento de teste pro backup");
-		metaDocument.setId("doc2");
-
-		assertEquals(ReturnMessage.OUTDATED,
-				indexer.addImage(metaDocument, image));
-	}
-
-
-	public void considerandoQueNadaFoiIndexadoNoIndiceDeBackup()
-			throws CorruptIndexException, LockObtainFailedException,
-			IOException {
-		IndexWriter writer = null;
-		IndexWriter backupWriter = null;
-		
-		DocumentBuilder builder = DocumentBuilderFactory
-				.getCEDDDocumentBuilder();
-		Document doc = builder.createDocument(image, metaDocument.getId());
-		List<Fieldable> fields = doc.getFields();
-		for (Fieldable field : fields) {
-			metaDocument.getDocument().add(field);
-		}
-
-		writer = new IndexWriter(FSDirectory.open(imageIndex),
-				new BrazilianAnalyzer(Version.LUCENE_30),
-				IndexWriter.MaxFieldLength.UNLIMITED);
-
-		writer.addDocument(metaDocument.getDocument());
-		writer.close();
-
-		backupWriter = new IndexWriter(FSDirectory.open(imageIndexBackup),
-				new BrazilianAnalyzer(Version.LUCENE_30),
-				IndexWriter.MaxFieldLength.UNLIMITED);
-
-	//	backupWriter.addDocument(metaDocument.getDocument());
-		backupWriter.close();
-	}
 
 	private void corruptIndex(File index) throws IOException {
 		File[] indexFiles = index.listFiles();

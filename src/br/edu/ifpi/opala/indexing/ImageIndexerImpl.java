@@ -255,24 +255,6 @@ public class ImageIndexerImpl implements ImageIndexer {
 
 	}
 
-	/**
-	 * Realiza a otimização do índice
-	 */
-	public synchronized void optimize() throws IOException {
-		Directory dir = FSDirectory.open(new File(IMAGE_INDEX));
-		IndexWriter writer = new IndexWriter(dir, new BrazilianAnalyzer(
-				Version.LUCENE_30), IndexWriter.MaxFieldLength.UNLIMITED);
-		writer.optimize();
-		writer.close();
-
-		Directory dirBackup = FSDirectory.open(new File(IMAGE_BACKUP));
-		IndexWriter writerBackup = new IndexWriter(dirBackup,
-				new BrazilianAnalyzer(Version.LUCENE_30),
-				IndexWriter.MaxFieldLength.UNLIMITED);
-
-		writerBackup.optimize();
-		writerBackup.close();
-	}
 
 	/**
 	 * Sobreescreve os metadados de um documento que possua o id informado com

@@ -73,14 +73,7 @@ public class BackuperTextTest {
 		metaDocument.setId("doc2");
 		assertEquals(ReturnMessage.SUCCESS,	indexer.addText(metaDocument, CONTENT));
 		
-		corruptIndex(textIndex);
-		assertEquals(ReturnMessage.UNEXPECTED_INDEX_ERROR, indexer.delText("doc2"));
-		assertEquals(ReturnMessage.SUCCESS, indexer.delText("doc2"));
-		assertEquals(ReturnMessage.SUCCESS,	indexer.addText(metaDocument, CONTENT));
-		
-		corruptIndex(textIndex);
-		assertEquals(ReturnMessage.UNEXPECTED_INDEX_ERROR, indexer.addText(metaDocument, CONTENT));
-	}
+		}
 
 	@Test
 	public void deveriaRestaurarOIndiceDepoisDeCorrompidoAoInvesDeAtualizar()
