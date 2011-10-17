@@ -185,6 +185,8 @@ public class NearRealTimeTextIndexer implements TextIndexer {
 			IndexWriter writer = indexManager.getWriter();
 			writer.deleteDocuments(new Term(Metadata.ID.getValue(), id));
 			writer.optimize();
+			writer.prepareCommit();
+			writer.commit();
 		} catch (CorruptIndexException e) {
 			Util.deleteDir(new File(TEXT_INDEX));
 			indexManager.restoreIndex();
@@ -200,6 +202,8 @@ public class NearRealTimeTextIndexer implements TextIndexer {
 				IndexWriter backup = indexManager.getBackupWriter();
 				backup.deleteDocuments(new Term(Metadata.ID.getValue(), id));
 				backup.optimize();
+				backup.prepareCommit();
+				backup.commit();
 			}
 
 		} catch (NullPointerException e) {
@@ -247,6 +251,8 @@ public class NearRealTimeTextIndexer implements TextIndexer {
 			IndexWriter writer = indexManager.getWriter();
 			writer.updateDocument(term, doc);
 			writer.optimize();
+			writer.prepareCommit();
+			writer.commit();
 			
 			try {
 				Document docBackup = getDocumentByIdentifierBackup(id);
@@ -260,6 +266,8 @@ public class NearRealTimeTextIndexer implements TextIndexer {
 					IndexWriter backup = indexManager.getBackupWriter();
 					backup.updateDocument(term, docBackup);
 					backup.optimize();
+					backup.prepareCommit();
+					backup.commit();
 				}				
 
 			} catch (NullPointerException e) {
