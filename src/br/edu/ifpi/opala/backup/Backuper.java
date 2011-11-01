@@ -37,7 +37,6 @@ public abstract class Backuper {
 	}
 	
 	public void update() throws IOException {
-		System.out.println("Iniciando atualização do backup...");
 		if(backupFolder.canRead()){
 	        for (String name : backup.listAll()) {
 	        	updateBackup(name, index, backup);
@@ -46,7 +45,6 @@ public abstract class Backuper {
         for (String name : index.listAll()) {
             copyFile(name, index, backup, bufferSize);
         }
-        System.out.println("Terminada.");
     }
 	
 	public void updateBackup(String name, Directory src, Directory dest) throws IOException {
@@ -120,10 +118,8 @@ public abstract class Backuper {
 	 */
 	public void restoreIndex() throws IOException{
 		this.beforeRestoreBackup();
-		System.out.println("iniciada restauração do indice");
 		Util.deleteDir(sourceFolder);
 		Util.copyIndex(backupFolder, sourceFolder);
-		System.out.println("terminada");
 		this.afterRestoreBackup();		
 	}
     

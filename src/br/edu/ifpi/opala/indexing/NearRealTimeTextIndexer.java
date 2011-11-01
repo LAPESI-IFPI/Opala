@@ -111,7 +111,7 @@ public class NearRealTimeTextIndexer implements TextIndexer {
 			writer.prepareCommit();
 			writer.commit();
 			numDocsIndex = writer.numDocs();
-			System.out.println("indice");
+			
 		} catch (NullPointerException e) {
 			Util.deleteDir(new File(TEXT_INDEX));
 			indexManager.restoreIndex();
@@ -134,7 +134,6 @@ public class NearRealTimeTextIndexer implements TextIndexer {
 				backup.prepareCommit();
 				backup.commit();
 				numDocsBackup = backup.numDocs();
-				System.out.println("backup");
 			
 		} catch (NullPointerException e) {
 			Util.deleteDir(new File(TEXT_BACKUP));
@@ -151,10 +150,9 @@ public class NearRealTimeTextIndexer implements TextIndexer {
 		}
 		
 		cont++;
-		if(cont == 15){
+		if(cont == 5){
 			if (numDocsIndex > numDocsBackup) {
 				indexManager.updateBackup();
-				System.out.println("backup desatualizado!!!");
 				return ReturnMessage.OUTDATED;
 			}
 		cont = 0;
@@ -297,7 +295,7 @@ public class NearRealTimeTextIndexer implements TextIndexer {
 			indexManager.restoreIndex();
 			return ReturnMessage.UNEXPECTED_INDEX_ERROR;
 		} 
-		System.out.println("atualizou");
+		
 		return ReturnMessage.SUCCESS;
 	}
 

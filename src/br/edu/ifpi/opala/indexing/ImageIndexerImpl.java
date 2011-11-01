@@ -139,7 +139,7 @@ public class ImageIndexerImpl implements ImageIndexer {
 			writer.addDocument(metaDocument.getDocument());
 			numDocsIndex = writer.numDocs();
 			writer.close();
-			System.out.println("add image");
+			
 		} catch (CorruptIndexException e) {
 			Util.deleteDir(new File(IMAGE_INDEX));
 			restoreIndex();
@@ -158,7 +158,7 @@ public class ImageIndexerImpl implements ImageIndexer {
 			backupWriter.addDocument(metaDocument.getDocument());
 			numDocsBackup = backupWriter.numDocs();
 			backupWriter.close();
-			System.out.println("add image backup");
+			
 		} catch (CorruptIndexException e) {
 			Util.deleteDir(new File(IMAGE_BACKUP));
 			updateBackup();
@@ -170,10 +170,9 @@ public class ImageIndexerImpl implements ImageIndexer {
 		}
 		
 		cont++;
-		if(cont == 15){
+		if(cont == 5){
 			if (numDocsIndex > numDocsBackup) {
 					updateBackup();
-					System.out.println("backup de imagem desatualizado");
 					return ReturnMessage.OUTDATED;
 			}
 		cont = 0;
@@ -304,7 +303,6 @@ public class ImageIndexerImpl implements ImageIndexer {
 			writer.addDocument(doc);
 			writer.optimize();
 			writer.close();
-			System.out.println("atualizou opala");
 			
 			try {
 				Directory dirBackup = FSDirectory.open(new File(IMAGE_BACKUP));
