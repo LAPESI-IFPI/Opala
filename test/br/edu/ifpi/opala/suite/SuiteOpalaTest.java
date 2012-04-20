@@ -6,9 +6,13 @@ import org.junit.runners.Suite;
 import br.edu.ifpi.opala.backup.BackuperImageTest;
 import br.edu.ifpi.opala.backup.BackuperTextTest;
 import br.edu.ifpi.opala.indexing.ImageIndexerTest;
+import br.edu.ifpi.opala.indexing.IndexImageFormatsTest;
+import br.edu.ifpi.opala.indexing.NearRealTimeTextIndexerTest;
+import br.edu.ifpi.opala.indexing.SearchImageFormatsTest;
 import br.edu.ifpi.opala.indexing.TextIndexingTest;
 import br.edu.ifpi.opala.indexing.TxtParserTest;
 import br.edu.ifpi.opala.searching.MetadataCompareTest;
+import br.edu.ifpi.opala.searching.NearRealTimeTextSearcherTestTest;
 import br.edu.ifpi.opala.searching.SearcherImageTest;
 import br.edu.ifpi.opala.searching.TextSearcherTest;
 import br.edu.ifpi.opala.utils.UtilTest;
@@ -16,23 +20,31 @@ import br.edu.ifpi.opala.utils.UtilTest;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 	
-	TextSearcherTest.class,
+	BackuperImageTest.class,
 	
-	SearcherImageTest.class,
-	
-	TextIndexingTest.class,
+	BackuperTextTest.class,
 	
 	ImageIndexerTest.class,
 	
+	IndexImageFormatsTest.class,
+	
+	NearRealTimeTextIndexerTest.class,
+	
+	SearchImageFormatsTest.class,
+	
+	TextIndexingTest.class,
+	
 	TxtParserTest.class,
-	
-	UtilTest.class,
-	
+
 	MetadataCompareTest.class,
 	
-	BackuperImageTest.class,
+	NearRealTimeTextSearcherTestTest.class,
 	
-	BackuperTextTest.class
+	SearcherImageTest.class,
+	
+	TextSearcherTest.class,
+		
+	UtilTest.class,
 	
 })
 

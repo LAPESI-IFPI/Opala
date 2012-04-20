@@ -11,8 +11,8 @@ import org.apache.lucene.index.CorruptIndexException;
 import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.SimpleFSDirectory;
-import org.junit.After;
-import org.junit.Before;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import br.edu.ifpi.opala.utils.IndexManager;
@@ -25,25 +25,27 @@ import br.edu.ifpi.opala.utils.Util;
 
 public class NearRealTimeTextIndexerTest {
 
-	File path = new File(Path.TEXT_INDEX.getValue());
-	File pathBackup = new File(Path.TEXT_BACKUP.getValue());
+	static File path = new File(Path.TEXT_INDEX.getValue());
+	static File pathBackup = new File(Path.TEXT_BACKUP.getValue());
 	private String CONTENT = "Conteúdo do document a ser indexado nos testes";
 	private MetaDocument METADOC = new MetaDocumentBuilder().id("1")
 			.title("Título do documento de teste")
 			.author("Autor do documento de teste").build();
-	private IndexManager indexManager;
+	private static IndexManager indexManager;
+	static TextIndexer indexer;
 
-	@Before
-	public void setUpNewIndex() throws IOException {
+	@BeforeClass
+	public static void setUpNewIndex() throws IOException {
 		Util.deleteDir(path);
 		Util.deleteDir(pathBackup);
-		// Directory indexDir = FSDirectory.open(path);
+		//Directory indexDir = FSDirectory.open(path);
 		Directory indexDir = new SimpleFSDirectory(path);
 		indexManager = new IndexManager(indexDir);
+		indexer = new NearRealTimeTextIndexer(indexManager);
 	}
 
-	@After
-	public void tearDown() throws CorruptIndexException, IOException {
+	@AfterClass
+	public static void tearDown() throws CorruptIndexException, IOException {
 		indexManager.close();
 	}
 
@@ -72,12 +74,14 @@ public class NearRealTimeTextIndexerTest {
 //
 //
 //	}
+	
+
 
 	@Test
 	public void deveriaIndexarUmDocumentoDeTexto() throws IOException,
 			InterruptedException {
 		// dado
-		TextIndexer indexer = new NearRealTimeTextIndexer(indexManager);
+		//TextIndexer indexer = new NearRealTimeTextIndexer(indexManager);
 
 		// quando
 		ReturnMessage message = indexer.addText(METADOC, CONTENT);
@@ -92,7 +96,7 @@ public class NearRealTimeTextIndexerTest {
 			throws IOException, InterruptedException {
 		// dado
 
-		TextIndexer indexer = new NearRealTimeTextIndexer(indexManager);
+		//TextIndexer indexer = new NearRealTimeTextIndexer(indexManager);
 
 		// quando
 		indexer.addText(METADOC, CONTENT);
@@ -107,14 +111,12 @@ public class NearRealTimeTextIndexerTest {
 	public void deveriaAtualizarUmDocumento() throws IOException,
 			InterruptedException {
 		// dado
-
-		TextIndexer indexer = new NearRealTimeTextIndexer(indexManager);
+		//TextIndexer indexer = new NearRealTimeTextIndexer(indexManager);
 
 		Map<String, String> metadataMap = new HashMap<String, String>();
 		metadataMap.put(Metadata.TITLE.getValue(), "Título atualizado");
 
-		// quando
-		indexer.addText(METADOC, CONTENT);
+		// quando		
 		ReturnMessage message = indexer
 				.updateText(METADOC.getId(), metadataMap);
 
@@ -140,6 +142,8 @@ public class NearRealTimeTextIndexerTest {
 		// entao
 		assertEquals(ReturnMessage.ID_NOT_FOUND, message);
 	}
+	
+	
 
 	@Test
 	public void deveriaDeletarUmDocumento() throws IOException,
@@ -147,7 +151,6 @@ public class NearRealTimeTextIndexerTest {
 		// dado
 
 		TextIndexer indexer = new NearRealTimeTextIndexer(indexManager);
-		assertEquals(ReturnMessage.SUCCESS, indexer.addText(METADOC, CONTENT));
 
 		// quando
 		ReturnMessage message = indexer.delText(METADOC.getId());
