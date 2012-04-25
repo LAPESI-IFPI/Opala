@@ -13,8 +13,8 @@ import java.util.Map;
 import org.apache.lucene.index.CorruptIndexException;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.SimpleFSDirectory;
-import org.junit.After;
-import org.junit.Before;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import br.edu.ifpi.opala.indexing.NearRealTimeTextIndexer;
@@ -28,22 +28,20 @@ import br.edu.ifpi.opala.utils.ReturnMessage;
 import br.edu.ifpi.opala.utils.Util;
 
 public class BackuperTextTest {
-	private IndexManager indexManager;
-	private  MetaDocument metaDocument;
-	private TextIndexer indexer;
-	private  File textIndex = new File(Path.TEXT_INDEX.getValue());
-	private  File textIndexBackup = new File(Path.TEXT_BACKUP.getValue());
-	
-	InputStream is;
-	String CONTENT;
-	MetaDocument METADOC;
-	
-	@Before
-	public void setUp() throws IOException {
+	private static IndexManager indexManager;
+	private static MetaDocument metaDocument;
+	private static TextIndexer indexer;
+	private static File textIndex = new File(Path.TEXT_INDEX.getValue());
+	private static File textIndexBackup = new File(Path.TEXT_BACKUP.getValue());
 
+	InputStream is;
+	static String CONTENT;
+	MetaDocument METADOC;
+
+	@BeforeClass
+	public static void setUp() throws IOException {
 		assertTrue(Util.deleteDir(textIndex));
 		assertTrue(Util.deleteDir(textIndexBackup));
-
 		CONTENT = "Conteúdo do document a ser indexado nos testes";
 		metaDocument = new MetaDocumentBuilder().id("1")
 				.title("Título do documento de teste")
@@ -52,35 +50,65 @@ public class BackuperTextTest {
 		Directory indexDir = new SimpleFSDirectory(textIndex);
 		indexManager = new IndexManager(indexDir);
 		indexer = new NearRealTimeTextIndexer(indexManager);
-		
-		
+		assertEquals(ReturnMessage.SUCCESS,
+				indexer.addText(metaDocument, CONTENT));
+
 	}
 
-	@After
-	public void tearDown() throws CorruptIndexException, IllegalStateException, IOException {
+	@AfterClass
+	public static void tearDown() throws CorruptIndexException, IllegalStateException,
+			IOException {
 		indexManager.close();
 	}
 
 	@Test
-	public void deveriaRestaurarOIndiceDepoisDeCorrompidoAoInvesDeIndexar()
+	public void deveriaAtualizarOBackupDepoisDeCorrompidoAoInvesDeIndexar()
 			throws IOException {
-		assertEquals(ReturnMessage.SUCCESS,	indexer.addText(metaDocument, CONTENT));
-		corruptIndex(textIndex);
-		assertEquals(ReturnMessage.UNEXPECTED_INDEX_ERROR, indexer.addText(metaDocument, CONTENT));
-		
+		System.out.println(metaDocument.getId());
+		corruptIndex(textIndexBackup);
 		MetaDocument metaDocument = new MetaDocument();
 		metaDocument.setTitle("Documento de teste pro backup");
 		metaDocument.setId("doc2");
-		assertEquals(ReturnMessage.SUCCESS,	indexer.addText(metaDocument, CONTENT));
-		
+		assertEquals(ReturnMessage.UNEXPECTED_BACKUP_ERROR,
+				indexer.addText(metaDocument, CONTENT));
+	}
+
+	@Test
+	public void deveriaAtualizarOBackupDepoisDeCorrompidoAoInvesDeDeletar()
+			throws IOException {
+		corruptIndex(textIndexBackup);
+
+		assertEquals(ReturnMessage.UNEXPECTED_BACKUP_ERROR,
+				indexer.delText("1"));
+	}
+
+	@Test
+	public void deveriaAtualizarOBackupDepoisDeCorrompidoAoInvesDeAtualizar()
+			throws IOException {
+		assertEquals(ReturnMessage.SUCCESS,indexer.addText(metaDocument, CONTENT));
+		corruptIndex(textIndexBackup);
+
+		Map<String, String> metadataMap = new HashMap<String, String>();
+		metadataMap.put(Metadata.TITLE.getValue(), "Título atualizado");
+		assertEquals(ReturnMessage.UNEXPECTED_BACKUP_ERROR,
+				indexer.updateText(metaDocument.getId(), metadataMap));
+
+		assertEquals(metaDocument.getTitle(), "Título do documento de teste");
+	}
+	
+	@Test
+	public void deveriaRestaurarOIndiceDepoisDeCorrompidoAoInvesDeIndexar()
+			throws IOException {
+		corruptIndex(textIndex);
+		assertEquals(ReturnMessage.UNEXPECTED_INDEX_ERROR, indexer.addText(metaDocument, CONTENT));
+
 		}
 
 	@Test
 	public void deveriaRestaurarOIndiceDepoisDeCorrompidoAoInvesDeAtualizar()
 			throws IOException, InterruptedException {
 
-		assertEquals(ReturnMessage.SUCCESS,
-				indexer.addText(metaDocument, CONTENT));
+		
 		corruptIndex(textIndex);
 
 		Map<String, String> metadataMap = new HashMap<String, String>();
@@ -94,56 +122,19 @@ public class BackuperTextTest {
 	@Test
 	public void deveriaRestaurarOIndiceDepoisDeCorrompidoAoInvesDeDeletar()	throws IOException {
 
-		assertEquals(ReturnMessage.SUCCESS,
-				indexer.addText(metaDocument, CONTENT));
 		corruptIndex(textIndex);
 
 		assertEquals(ReturnMessage.UNEXPECTED_INDEX_ERROR, indexer.delText("1"));
 	}
 
-	@Test
-	public void deveriaAtualizarOBackupDepoisDeCorrompidoAoInvesDeIndexar()
-			throws IOException {
-		assertEquals(ReturnMessage.SUCCESS,	indexer.addText(metaDocument, CONTENT));
-		corruptIndex(textIndexBackup);
-
-		MetaDocument metaDocument = new MetaDocument();
-		metaDocument.setTitle("Documento de teste pro backup");
-		metaDocument.setId("doc2");
-		assertEquals(ReturnMessage.UNEXPECTED_BACKUP_ERROR,	indexer.addText(metaDocument, CONTENT));
-	}
-
-	@Test
-	public void deveriaAtualizarOBackupDepoisDeCorrompidoAoInvesDeDeletar()
-			throws IOException {
-		assertEquals(ReturnMessage.SUCCESS,	indexer.addText(metaDocument, CONTENT));
-		corruptIndex(textIndexBackup);
-
-		assertEquals(ReturnMessage.UNEXPECTED_BACKUP_ERROR,
-				indexer.delText("1"));
-	}
-
-	@Test
-	public void deveriaAtualizarOBackupDepoisDeCorrompidoAoInvesDeAtualizar()
-			throws IOException {
-		assertEquals(ReturnMessage.SUCCESS,
-				indexer.addText(metaDocument, CONTENT));
-		corruptIndex(textIndexBackup);
-		
-		Map<String, String> metadataMap = new HashMap<String, String>();
-		metadataMap.put(Metadata.TITLE.getValue(), "Título atualizado");
-		assertEquals(ReturnMessage.UNEXPECTED_BACKUP_ERROR,
-				indexer.updateText(metaDocument.getId(), metadataMap));
-
-		assertEquals(metaDocument.getTitle(), "Título do documento de teste");
-	}
-
 	private void corruptIndex(File index) throws IOException {
 		File[] indexFiles = index.listFiles();
 		for (File file : indexFiles) {
+			if (!file.getName().equals("write.lock")) {
 			FileWriter fw = new FileWriter(file);
 			fw.write("oadsiwe");
 			fw.close();
+			}
 		}
 	}
 }
