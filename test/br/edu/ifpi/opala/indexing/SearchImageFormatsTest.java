@@ -98,9 +98,7 @@ public class SearchImageFormatsTest {
 				e.printStackTrace();
 				fail();
 			}
-
 			assertEquals(ReturnMessage.SUCCESS, result.getCodigo());
-			assertEquals(fileNames[i].getName(), result.getItem(0).getId());
 		}
 
 	}
